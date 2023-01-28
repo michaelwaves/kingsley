@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: #0a75c5;
 }
 
 .App-logo {
@@ -14,7 +14,7 @@
   }
 }
 
-.App-header {
+.App-body {
   background-color: #0a75c5;
   min-height: 100vh;
   display: flex;
@@ -22,23 +22,107 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ffa900;
 }
 
-.box {
+.chatbot {
   background-color: whitesmoke;
-  border-radius: 20px;
+  align-self: center;
+  align-items: center;
+  width: fit-content;
+  border-radius: 25px;
+  margin: auto;
+  padding: 45px 48px;
+  top: auto;
+  height: 50%
+}
 
+.chatbot-body {
+  border-style: solid;
+  border-width: 10px;
+  border-color: #ffa900;
+  border-radius: 20px;
 }
 
 .bar-header {
   border-radius: 20px;
   display: flex;
   flex-direction: row;
+  height: 10rem;
+  border: #ffa900;
+  border-style: solid;
+  justify-content: space-between;
+  border-width: 10px;
+  margin: 20px;
+}
+
+.bar-img {
+  margin: 0px;
+  padding: 10px;
+  background-color: #0a75c5;
+  border-radius: 5%;
+}
+
+.bar-text>h1 {
+  text-align: left;
+}
+
+.comment-name {
+  width: 97%;
+  text-align: right;
+  padding-right: 20px;
+  margin-right: 20px;
+
+}
+
+.comment-text {
+  text-align: left;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: grey;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.ai-comment-name {
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.ai-comment-text {
+  text-align: right;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #0a75c5;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  align-self: right;
+}
+
+.input-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-box {
+  padding: 15px;
+  margin: 5px;
+  border-radius: 20px;
+  width: fit-content
+}
+
+.icon {
+  width: 50px;
 }
 
 @keyframes App-logo-spin {

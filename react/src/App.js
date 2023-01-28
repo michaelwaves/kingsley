@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
+      </header>
+      <body className="App-body">
         <Main />
         <a
           className="App-link"
@@ -16,7 +18,7 @@ function App() {
         >
           Visit Kingston
         </a>
-      </header>
+      </body>
     </div>
   );
 }
