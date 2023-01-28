@@ -35,8 +35,10 @@
 
 }
 
-img {
+.bar-header {
   border-radius: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 @keyframes App-logo-spin {
