@@ -38,7 +38,7 @@
 .bar-header {
   border-radius: 20px;
   display: flex;
-  flex-direction:
+  flex-direction: row;
 }
 
 @keyframes App-logo-spin {
