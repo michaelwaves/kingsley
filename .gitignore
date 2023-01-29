@@ -25,3 +25,4 @@ yarn-error.log*
 data_processing/glove.6b/*
 data_processing/glove.6b.zip
 data_processing/html.json
+venv/
