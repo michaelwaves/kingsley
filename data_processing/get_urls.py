@@ -6,7 +6,7 @@ import re
 import json
 #from prettyprint import prettyprint
 save_file = ".\\data_processing\\html.json"
-save = json.load(open(save_file))
+save = json.load(open(save_file, 'w+'))
 def get_all_urls(base, rep, at_links, save, save_file, visited = set(), filter = []):
     while at_links:
         try:
