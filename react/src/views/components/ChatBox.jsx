@@ -13,20 +13,20 @@ function ChatBox(props) {
     }
 
 
+
+    return (
+        <div>
+            {children}
+            <input
+                type="image"
+                src={send}
+                alt="whoops"
+                className="icon"
+                onClick={() => setNumChildren(numChildren + 1)}
+
+            />
+        </div>
+    )
+
 }
-return (
-    <div>
-        {children}
-        <input
-            type="image"
-            src={send}
-            alt="whoops"
-            className="icon"
-            onClick={() => setNumChildren(numChildren + 1)}
-
-        />
-    </div>
-)
-
-
 export default ChatBox
