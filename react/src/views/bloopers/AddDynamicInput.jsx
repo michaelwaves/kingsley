@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Comment from "./components/Comment";
+import Comment from "../components/Comment";
 
 function AddDynamicInput(props) {
     const [val, setVal] = useState([])

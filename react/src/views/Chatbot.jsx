@@ -11,7 +11,7 @@ import React from "react";
 import ChatBox from "./components/ChatBox";
 import MicRecorder from "mic-recorder-to-mp3"
 import axios, * as others from 'axios';
-import AddDynamicInput from "./AddDynamicInput";
+import AddDynamicInput from "./bloopers/AddDynamicInput";
 import { isClickableInput } from "@testing-library/user-event/dist/utils";
 import Dictaphone from "./components/Dictaphone";
 
@@ -73,7 +73,7 @@ function Chatbot() {
             isUser: true,
             text: msg
         })
-
+        setMsgs([...oldMsgs, ...newMsgs])
         const response = await getUser();
 
         newMsgs.push({
