@@ -27,6 +27,10 @@
 
 .App-link {
   color: #ffa900;
+  margin-bottom: auto;
+  margin-top: 30px;
+  padding: top 10px;
+  padding-bottom: auto;
 }
 
 .chatbot {
@@ -62,6 +66,8 @@
 
 .logo-img {
   image-rendering: pixelated;
+  background-color: #0a75c5;
+  border-radius: 10px;
 }
 
 .bar-img {
@@ -70,6 +76,10 @@
   background-color: #0a75c5;
   border-radius: 5%;
 
+}
+
+.bar-text {
+  margin: 10px
 }
 
 .bar-text>h1 {
@@ -97,13 +107,23 @@
 }
 
 .ai-comment-name {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   text-align: left;
-  padding-left: 20px;
+  padding-left: 30px;
+
+}
+
+.ai-comment-name>img {
+  image-rendering: pixelated;
+  width: 70px;
+  background-color: #0a75c5;
+  border-radius: 10px
 }
 
 .ai-comment-text {
-  text-align: right;
+  text-align: left;
   padding: 10px 20px;
   border-radius: 20px;
   background-color: #0a75c5;
@@ -111,12 +131,46 @@
   width: fit-content;
   height: fit-content;
   align-self: right;
+  max-width: 50vw;
+
 }
+
+.ai-comment-links {
+  text-align: right;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: gray;
+  color: #0a75c5;
+  width: fit-content;
+  height: fit-content;
+  align-self: left;
+  max-width: 50vw;
+}
+
+.ai-comment-links>ul {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  font-size: 20px;
+  text-align: left;
+  overflow: auto;
+}
+
+a {
+  width: auto;
+  font-size: 20px;
+  text-align: left;
+  color: white;
+  text-decoration: none;
+}
+
 
 .input-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: left 20px right 20px;
+  margin: 20px;
 }
 
 .input-box {

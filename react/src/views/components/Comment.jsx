@@ -10,7 +10,8 @@ function Comment(props) {
 
     const timeStart = () => {
         const date = new Date();
-        setTime(`${date.getMinutes()} : ${date.getSeconds()}`)
+        setTime(date.getHours()
+            + ':' + date.getMinutes())
     }
 
     useEffect(() => {
