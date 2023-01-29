@@ -15,16 +15,42 @@ import AddDynamicInput from "./bloopers/AddDynamicInput";
 import { isClickableInput } from "@testing-library/user-event/dist/utils";
 import Dictaphone from "./components/Dictaphone";
 
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 
 
 
 function Chatbot() {
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+      } = useSpeechRecognition()
+
     const [title, setTitle] = useState("");
+    const [isRecording, setIsRecording] = useState(null)
     const msgField = useRef('');
 
     const [msgs, setMsgs] = useState([]); // hold an object ifUser: bool , text: string
 
+    const startRecording = () => {
+        SpeechRecognition.startListening().then(() => {
+            setIsRecording(true)
+        })
+      }
+  
+      const stopRecording = () => {
+        SpeechRecognition.stopListening().then(() => {
+            setIsRecording(false)
+        })
+      }
+  
+      useEffect(() => {
+        if (listening) {
+          setTitle(transcript)
+        }
+      })
 
     const commentData = [{ "user": "human", "text": "I love Kingston" },
     { "user": "ai", "text": "me too" },
@@ -105,8 +131,7 @@ function Chatbot() {
             ))
             }
             <div className="input-bar">
-                <input type="image" src={mic} alt="whoops" className="icon" /*onClick={isRecording ? stopRecording : startRecording}*/ />
-
+                <input type="image" src={mic} alt="whoops" className="icon" onClick={isRecording ? stopRecording : startRecording} />
                 <Speech text={msgs.map((msg) => msg.text)} />
                 <input
                     type="text"
