@@ -26,8 +26,9 @@ function Chatbot() {
         listening,
         resetTranscript,
         browserSupportsSpeechRecognition
-      } = useSpeechRecognition()
+    } = useSpeechRecognition()
 
+    const [icon, setIcon] = useState("icon-null")
     const [title, setTitle] = useState("");
     const [isRecording, setIsRecording] = useState(null)
     const msgField = useRef('');
@@ -37,20 +38,23 @@ function Chatbot() {
     const startRecording = () => {
         SpeechRecognition.startListening().then(() => {
             setIsRecording(true)
+            setIcon("icon-true")
         })
-      }
-  
-      const stopRecording = () => {
+    }
+
+    const stopRecording = () => {
         SpeechRecognition.stopListening().then(() => {
             setIsRecording(false)
+            setIcon("icon-null")
         })
-      }
-  
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         if (listening) {
-          setTitle(transcript)
+            setTitle(transcript)
+
         }
-      })
+    })
 
     const commentData = [{ "user": "human", "text": "I love Kingston" },
     { "user": "ai", "text": "me too" },
@@ -118,8 +122,7 @@ function Chatbot() {
         setMsgs([...oldMsgs, ...newMsgs])
         setTitle('')
     }
-
-
+    //let inputStyle = isRecording ? 'background-color:red' : 'background-color:green'
     return (
         <div className="chatbot">
             <Bar />
@@ -131,7 +134,13 @@ function Chatbot() {
             ))
             }
             <div className="input-bar">
-                <input type="image" src={mic} alt="whoops" className="icon" onClick={isRecording ? stopRecording : startRecording} />
+                <input
+                    type="image"
+                    src={mic}
+                    alt="whoops"
+                    className={icon}
+                    //style=""
+                    onClick={isRecording ? stopRecording : startRecording} />
                 <Speech text={msgs.map((msg) => msg.text)} />
                 <input
                     type="text"

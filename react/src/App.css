@@ -184,6 +184,17 @@ a {
   width: 50px;
 }
 
+.icon-null {
+  width: 50px;
+  background-color: none
+}
+
+.icon-true {
+  width: 50px;
+  background-color: #ffa900;
+  border-radius: 15px;
+}
+
 .icon:hover {
   background-color: #ffa900;
   border-radius: 15px;
