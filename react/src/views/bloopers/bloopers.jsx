@@ -174,3 +174,19 @@ if (transcriptData.status !== "completed" && isLoading) {
 return () => clearInterval(interval)
 },)
 */
+
+/*var axios = require('axios');
+
+    var config = {
+        method: 'get',
+        url: `https://a0e7-76-64-68-28.ngrok.io/question?text=${title}`,
+        headers: {}
+    };*/
+
+    /*axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });*/

@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import mic from "./images/mic-black.svg"
 import send from "./images/send-1-svgrepo-com.svg"
 import speaker from "./images/speaker-wave-2.svg"
-import Speech from "./components/Speech";
+import Speech from "./components/Speech2";
 import React from "react";
 import ChatBox from "./components/ChatBox";
 import MicRecorder from "mic-recorder-to-mp3"
@@ -14,10 +14,19 @@ import axios, * as others from 'axios';
 import AddDynamicInput from "./bloopers/AddDynamicInput";
 import { isClickableInput } from "@testing-library/user-event/dist/utils";
 import Dictaphone from "./components/Dictaphone";
-
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
+/*
+<input
+                    type="image"
+                    src={mic}
+                    alt="whoops"
+                    className={icon}
+                    //style=""
+                    onClick={isRecording ? stopRecording : startRecording}
+                    handleKeypress={handleSpeakKeypress}
 
+                />*/
 
 
 function Chatbot() {
@@ -31,6 +40,7 @@ function Chatbot() {
     const [icon, setIcon] = useState("icon-null")
     const [title, setTitle] = useState("");
     const [isRecording, setIsRecording] = useState(null)
+    const [speechRate, setSpeechRate] = useState(1)
     const msgField = useRef('');
 
     const [msgs, setMsgs] = useState([]); // hold an object ifUser: bool , text: string
@@ -75,7 +85,8 @@ function Chatbot() {
     async function getUser() {
         try {
             // http://www.myhackathonapixdlolol.mintlify.com/api?text=theinput
-            const response = await axios.get(`https://7c2b-76-64-68-28.ngrok.io/question?text=${title}`, config);
+            //const response = await axios.get(`https://7c2b-76-64-68-28.ngrok.io/question?text=${title}`, config);
+            const response = await axios.get(`http://127.0.0.1:8080/question?text=${title}`, config);
             console.info(response);
             const returned_info = { "text": response.data.answer, "links": response.data.top_links }
             return returned_info
@@ -88,6 +99,17 @@ function Chatbot() {
     const handleKeypress = e => {
         if (e.keyCode === 13) {
             clickBtn();
+        }
+        //backslash key to trigger speech
+        if (e.keyCode === 220) {
+            isRecording ? stopRecording() : startRecording()
+        }
+    };
+
+
+    const handleSpeakKeypress = e => {
+        if (e.keyCode === 220) {
+            isRecording ? stopRecording() : startRecording()
         }
     };
     const clickBtn = async () => {
@@ -140,8 +162,17 @@ function Chatbot() {
                     alt="whoops"
                     className={icon}
                     //style=""
-                    onClick={isRecording ? stopRecording : startRecording} />
-                <Speech text={msgs.map((msg) => msg.text)} />
+                    onClick={isRecording ? stopRecording : startRecording}
+                    handleKeypress={handleSpeakKeypress}
+
+                />
+
+                <Speech text={msgs.map((msg) => msg.text)} speechRate={speechRate} />
+                <div id="rate-control">
+                    <label for="rate">Rate:</label>
+                    <input type="range" min="0.5" max="2" value={speechRate} step="0.1" id="rate"
+                        onChange={(e) => (setSpeechRate(e.target.value))} />
+                </div>
                 <input
                     type="text"
                     className="input-box"
@@ -151,6 +182,8 @@ function Chatbot() {
                     onKeyDown={handleKeypress}
 
                 />
+
+
                 <input
                     type="image"
                     src={send}
