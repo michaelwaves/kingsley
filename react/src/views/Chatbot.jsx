@@ -16,6 +16,8 @@ import { isClickableInput } from "@testing-library/user-event/dist/utils";
 import Dictaphone from "./components/Dictaphone";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
+import CsvDownloadButton from 'react-json-to-csv'
+
 /*
 <input
                     type="image"
@@ -26,7 +28,9 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
                     onClick={isRecording ? stopRecording : startRecording}
                     handleKeypress={handleSpeakKeypress}
 
-                />*/
+                />
+                
+                <Speech text={msgs.map((msg) => msg.text)} speechRate={speechRate} />*/
 
 
 function Chatbot() {
@@ -160,17 +164,17 @@ function Chatbot() {
                     type="image"
                     src={mic}
                     alt="whoops"
-                    className={icon}
+                    className='icon'
                     //style=""
                     onClick={isRecording ? stopRecording : startRecording}
                     handleKeypress={handleSpeakKeypress}
 
                 />
 
-                <Speech text={msgs.map((msg) => msg.text)} speechRate={speechRate} />
-                <div id="rate-control">
+                <Speech text={msgs.slice(-2).map((msg) => msg.text)} speechRate={speechRate} />
+                <div id="rate-control" className="speech-rate-bar">
                     <label for="rate">Rate:</label>
-                    <input type="range" min="0.5" max="2" value={speechRate} step="0.1" id="rate"
+                    <input className="slider" type="range" min="0.5" max="2" value={speechRate} step="0.1" id="rate"
                         onChange={(e) => (setSpeechRate(e.target.value))} />
                 </div>
                 <input
@@ -192,6 +196,7 @@ function Chatbot() {
                     onClick={() => clickBtn()}
 
                 />
+                <CsvDownloadButton className="csv-download-button" data={msgs} filename="chatbot.csv" delimiter="," />
             </div>
         </div>
     )

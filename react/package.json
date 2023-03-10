@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "global": "^4.4.0"
+    "global": "^4.4.0",
+    "react-json-to-csv": "^1.2.0"
   }
 }
